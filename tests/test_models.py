@@ -3,7 +3,28 @@
 import numpy as np
 import numpy.testing as npt
 
-from inflammation.models import daily_mean
+from inflammation.models import (daily_max,
+        daily_mean, daily_min)
+def daily_max():
+    """Tests that max function works for an array of positive integers."""
+
+    test_input = np.array([[4, 2, 5],
+                           [1, 6, 2],
+                           [4, 1, 9]])
+    test_result = np.array([4, 6, 9])
+
+    npt.assert_array_equal(daily_max(test_input), test_result)
+
+def test_daily_min():
+    """Test that min function works for an array of positive and negative integers."""
+
+    test_input = np.array([[ 4, -2, 5],
+                           [ 1, -6, 2],
+                           [-4, -1, 9]])
+    test_result = np.array([-4, -6, 2])
+
+    npt.assert_array_equal(daily_min(test_input), test_result)
+
 
 def test_daily_mean_zeros():
     """Test that mean function works for an array of zeros."""
